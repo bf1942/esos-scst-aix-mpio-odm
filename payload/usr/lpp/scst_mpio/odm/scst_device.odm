@@ -1,0 +1,691 @@
+PdDv:
+        type = "scstmpio"
+        class = "PCM"
+        subclass = "friend"
+        prefix = ""
+        devid = ""
+        base = 0
+        has_vpd = 0
+        detectable = 0
+        chgstatus = 0
+        bus_ext = 0
+        fru = 0
+        led = 0
+        setno = 1
+        msgno = 1
+        catalog = "aixpcm.cat"
+        DvDr = "aixdiskpcmke"
+        Define = ""
+        Configure = "aixdiskpcmrtl"
+        Change = ""
+        Unconfigure = ""
+        Undefine = ""
+        Start = ""
+        Stop = ""
+        inventory_only = 0
+        uniquetype = "PCM/friend/scstmpio"
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "dvc_support"
+        deflt = ""
+        values = "disk/fcp/scstmpio"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "sl"
+        nls_index = 2
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "algorithm"
+        deflt = "shortest_queue"
+        values = "fail_over,round_robin,shortest_queue"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "sl"
+        nls_index = 3
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "link_meth"
+        deflt = ""
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = ""
+        nls_index = 0
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "hcheck_mode"
+        deflt = "nonactive"
+        values = "enabled,failed,nonactive"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "sl"
+        nls_index = 6
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "hcheck_interval"
+        deflt = "60"
+        values = "0-3600,1"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "nr"
+        nls_index = 7
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "hcheck_cmd"
+        deflt = "test_unit_rdy"
+        values = "test_unit_rdy,inquiry"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "sl"
+        nls_index = 12
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "dist_tw_width"
+        deflt = "50"
+        values = "10-1000,1"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "nr"
+        nls_index = 8
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "dist_err_pcnt"
+        deflt = "0"
+        values = "0-100,1"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "nr"
+        nls_index = 9
+
+PdAt:
+        uniquetype = "PCM/friend/scstmpio"
+        attribute = "timeout_policy"
+        deflt = "fail_path"
+        values = "retry_path,fail_path,disable_path"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "sl"
+        nls_index = 17
+
+PdDv:
+        type = "scstmpio"
+        class = "disk"
+        subclass = "fcp"
+        prefix = "hdisk"
+        devid = ""
+        base = 1
+        has_vpd = 1
+        detectable = 1
+        chgstatus = 0
+        bus_ext = 0
+        fru = 1
+        led = 1574
+        setno = 1
+        msgno = 1
+        catalog = "scstmpio.cat"
+        DvDr = "scsidisk"
+        Define = "/usr/lib/methods/define"
+        Configure = "/usr/lib/methods/cfgscsidisk"
+        Change = "/usr/lib/methods/chgdisk"
+        Unconfigure = "/usr/lib/methods/ucfgdevice"
+        Undefine = "/usr/lib/methods/undefine"
+        Start = ""
+        Stop = ""
+        inventory_only = 0
+        uniquetype = "disk/fcp/scstmpio"
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "message_no"
+        deflt = "98"
+        values = "98,114,115,122,123,124"
+        width = ""
+        type = "T"
+        generic = ""
+        rep = "nl"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "scsi_id"
+        deflt = ""
+        values = ""
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "s"
+        nls_index = 80
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "lun_id"
+        deflt = ""
+        values = ""
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "s"
+        nls_index = 81
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "location"
+        deflt = ""
+        values = ""
+        width = ""
+        type = "R"
+        generic = "DUC"
+        rep = "s"
+        nls_index = 82
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "ww_name"
+        deflt = ""
+        values = ""
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "s"
+        nls_index = 83
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "node_name"
+        deflt = ""
+        values = ""
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "s"
+        nls_index = 94
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "pv"
+        deflt = "no"
+        values = "no,yes,clear"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "sl"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "pvid"
+        deflt = "none"
+        values = ""
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "s"
+        nls_index = 2
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "mode_data"
+        deflt = "0x000000080000000000000200010124020a00000000000000000000070a05000000000000000000080c0000ffff0000ffffffff00040a06000100000000"
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "mode_default"
+        deflt = "0x00000000010700ffff000000ff0202ffff070a00ffff0000000000ffff"
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "recovery_limit"
+        deflt = "4"
+        values = "4"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "n"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "safe_relocate"
+        deflt = "0"
+        values = "0"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "n"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "reset_delay"
+        deflt = "0"
+        values = "0,2"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "nl"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "queue_depth"
+        deflt = "32"
+        values = "1-256,1"
+        width = ""
+        type = "R"
+        generic = "DUC"
+        rep = "nr"
+        nls_index = 30
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "q_type"
+        deflt = "simple"
+        values = "none,ordered,simple"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "sl"
+        nls_index = 31
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "q_err"
+        deflt = "yes"
+        values = "no,yes"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "sl"
+        nls_index = 32
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "clr_q"
+        deflt = "no"
+        values = "no,yes"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "sl"
+        nls_index = 33
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "ses_attach"
+        deflt = "no"
+        values = "no,yes"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "sl"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "rw_max_time"
+        deflt = "0"
+        values = "0,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,1000"
+        width = ""
+        type = "R"
+        generic = "DUC"
+        rep = "nl"
+        nls_index = 168
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "rw_timeout"
+        deflt = "30"
+        values = "10-1000,1"
+        width = ""
+        type = "R"
+        generic = "UDC"
+        rep = "nr"
+        nls_index = 34
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "start_timeout"
+        deflt = "60"
+        values = "30-1000,1"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "nr"
+        nls_index = 35
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "max_transfer"
+        deflt = "0x80000"
+        values = "0x20000,0x40000,0x80000,0x100000,0x200000,0x400000,0x800000,0x1000000"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "nl"
+        nls_index = 88
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "max_coalesce"
+        deflt = "0x40000"
+        values = "0x10000,0x20000,0x40000,0x80000,0x100000,0x200000,0x400000,0x800000,0x1000000"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "nl"
+        nls_index = 137
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "reassign_to"
+        deflt = "120"
+        values = "30-1000,1"
+        width = ""
+        type = "R"
+        generic = "UD"
+        rep = "nr"
+        nls_index = 36
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "pm_dev_itime"
+        deflt = "28800"
+        values = "0-28800,1"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "nr"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "pm_dev_stime"
+        deflt = "28800"
+        values = "0-28800,1"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "nr"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "pm_devid"
+        deflt = "0x00100000"
+        values = "0x00100000, 0x00180000,0x00181000,0x00182000,0x00183000,0x00184000,0x00185000, 0x00186000,0x00187000,0x00188000,0x00189000,0x0018a000,0x0018b000,0x0018c000,0x0018d000,0x0018e000,0x0018f000"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "nr"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "cfgmgr_psafe"
+        deflt = ""
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = ""
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "unique_id"
+        deflt = ""
+        values = "081083"
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "nl"
+        nls_index = 79
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "reserve_policy"
+        deflt = "no_reserve"
+        values = "no_reserve,single_path,PR_exclusive,PR_shared"
+        width = ""
+        type = "R"
+        generic = "DUC"
+        rep = "sld"
+        nls_index = 96
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "PR_key_value"
+        deflt = "none"
+        values = ""
+        width = ""
+        type = "R"
+        generic = "DUC"
+        rep = "s"
+        nls_index = 95
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "PCM"
+        deflt = "PCM/friend/scstmpio"
+        values = "PCM/friend/scstmpio"
+        width = ""
+        type = "_FD"
+        generic = "D"
+        rep = "sl"
+        nls_index = 97
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "pr_options"
+        deflt = "0x00"
+        values = "0x00-0x0F"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "nr"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "sn_location"
+        deflt = "240C"
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "device_mode"
+        deflt = "0"
+        values = "0-100,1"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "nr"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "lun_reset_spt"
+        deflt = "yes"
+        values = "yes,no"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "sl"
+        nls_index = 107
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "max_retry_delay"
+        deflt = "60"
+        values = "0-300,1"
+        width = ""
+        type = "R"
+        generic = "DU"
+        rep = "nr"
+        nls_index = 108
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "ucfg_stopu"
+        deflt = "no"
+        values = "no"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "sl"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "FC3_REC"
+        deflt = "false"
+        values = "true,false"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "sl"
+        nls_index = 142
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "alt_proto"
+        deflt = "capidev"
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "sl"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "LUR_on_error"
+        deflt = "yes"
+        values = "yes,no"
+        width = ""
+        type = "R"
+        generic = "U"
+        rep = "sl"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "min_rw_to"
+        deflt = "30"
+        values = "10-60,1"
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "nr"
+        nls_index = 167
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "vpd_index"
+        deflt = "0"
+        values = "0-100,1"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "nr"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "vpd_map"
+        deflt = "1"
+        values = "MF0808C,TM1010C,RL2004C,Z00008X,Z1040780C,SN081083X"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "encrypt_md_loc"
+        deflt = "none"
+        values = "none,on_disk"
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "sl"
+        nls_index = 171
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "encrypt_enabled"
+        deflt = "no"
+        values = "yes,no"
+        width = ""
+        type = "R"
+        generic = "D"
+        rep = "sl"
+        nls_index = 172
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "model_map"
+        deflt = "0808SCST_BIO"
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "model_map"
+        deflt = "0818SCST_BIOvios            "
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 0
+
+PdAt:
+        uniquetype = "disk/fcp/scstmpio"
+        attribute = "model_map"
+        deflt = "0818SCST_BIOaix72           "
+        values = ""
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 0
