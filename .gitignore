@@ -1,0 +1,12 @@
+# mkinstallp output
+payload/tmp/
+payload/.info/
+*.bff
+*.toc
+
+# Generated template
+devices.fcp.disk.SCST.mpio.template
+
+# Editor/OS files
+.DS_Store
+*~
