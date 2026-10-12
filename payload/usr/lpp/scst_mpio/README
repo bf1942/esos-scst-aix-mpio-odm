@@ -1,0 +1,104 @@
+SCST_BIO AIX Device ODM Package - v2.0.0.0 RC1
+=================================================
+
+Purpose
+-------
+This is a vendor-style AIX/VIOS Device ODM package for SCST_BIO Fibre Channel
+LUNs. Unlike the v1.x kit, it does NOT inject SCST_BIO into IBM's generic
+disk/fcp/mpioosdisk model table.
+
+It creates independent device identities:
+
+  disk/fcp/scstmpio
+  PCM/friend/scstmpio
+
+The device still reuses IBM AIX native components:
+
+  DvDr      = scsidisk
+  Configure = /usr/lib/methods/cfgscsidisk
+  PCM DvDr  = aixdiskpcmke
+  PCM cfg   = aixdiskpcmrtl
+
+Expected result
+---------------
+  # lsdev -Cc disk
+  hdiskN Available ... SCST MPIO FC Disk
+
+  # lsdev -l hdiskN -F 'name:uniquetype:description'
+  hdiskN:disk/fcp/scstmpio:SCST MPIO FC Disk
+
+  # lsmpio -l hdiskN
+  ... multiple fscsi paths for the same hdisk ...
+
+Recognition
+-----------
+Primary vendor-only model_map:
+  0808SCST_BIO
+
+Two exact fallback maps are also included for the currently observed Product IDs:
+  0818SCST_BIOvios
+  0818SCST_BIOaix72
+
+Page 0x83 identity is used:
+  unique_id values = 081083
+
+Defaults
+--------
+Disk:
+  queue_depth=32
+  reserve_policy=no_reserve
+  rw_timeout=30
+  lun_reset_spt=yes
+
+PCM:
+  algorithm=shortest_queue
+  hcheck_interval=60
+  hcheck_cmd=test_unit_rdy
+  hcheck_mode=nonactive
+  timeout_policy=fail_path
+
+No cfgmgr Config_Rules tuning hook is used. Defaults live directly in PdAt.
+
+Build
+-----
+Run on AIX or VIOS in oem_setup_env:
+
+  ./build.sh
+
+Requires mkinstallp (bos.adt.insttools) and gencat.
+
+Important test procedure
+------------------------
+1. Back up ODM and ensure the test hdisk is not in use.
+2. Build and preview the image:
+     cd payload/tmp
+     inutoc .
+     installp -L -d .
+     installp -apd . devices.fcp.disk.SCST.mpio.rte
+3. Install:
+     installp -aXgd . devices.fcp.disk.SCST.mpio.rte
+4. Verify predefined ODM:
+     /usr/lpp/scst_mpio/bin/scst_mpio_check
+5. Existing SCST hdisks keep their current PdDvLn. To test the new type, safely
+   undefine the old test hdisk(s) and rediscover with cfgmgr/cfgdev.
+6. Verify:
+     lsdev -Cc disk
+     lsdev -l hdiskN -F 'name:uniquetype:description'
+     lsattr -El hdiskN
+     lsmpio -l hdiskN
+
+Safety
+------
+- The installer never removes configured hdisks.
+- Deinstall refuses to remove ODM support while disk/fcp/scstmpio CuDv objects
+  still exist.
+- The v1 generic SCST_BIO mpio_model_map and its Config_Rules tuning hook are
+  removed during v2 installation to prevent generic mpioosdisk from winning
+  device selection.
+- This is custom lab/vendor integration and is not IBM-certified storage support.
+
+RC1 validation focus
+--------------------
+The key item to prove on the VIOS test system is that cfgscsidisk selects
+disk/fcp/scstmpio from the vendor-only model_map (0808SCST_BIO). If it does not,
+the exact 0818 Vendor+Product fallback entries should be tested next.
