@@ -1,0 +1,32 @@
+#!/bin/ksh
+PATH=/usr/bin:/usr/sbin:/bin:/sbin
+export PATH
+ODMDIR=/etc/objrepos
+export ODMDIR
+
+print "===== FILESET ====="
+lslpp -L devices.fcp.disk.SCST.mpio.rte 2>/dev/null || true
+
+print "===== SCST DISK TYPE ====="
+odmget -q 'uniquetype=disk/fcp/scstmpio' PdDv 2>/dev/null
+odmget -q 'uniquetype=disk/fcp/scstmpio AND attribute=model_map' PdAt 2>/dev/null
+odmget -q 'uniquetype=disk/fcp/scstmpio AND attribute=unique_id' PdAt 2>/dev/null
+odmget -q 'uniquetype=disk/fcp/scstmpio AND attribute=PCM' PdAt 2>/dev/null
+
+print "===== SCST PCM TYPE ====="
+odmget -q 'uniquetype=PCM/friend/scstmpio' PdDv 2>/dev/null
+odmget -q 'uniquetype=PCM/friend/scstmpio' PdAt 2>/dev/null
+
+print "===== CONFIGURED SCST MPIO DISKS ====="
+for d in $(lsdev -Cc disk -F name 2>/dev/null); do
+    ut=$(lsdev -l "$d" -F uniquetype 2>/dev/null)
+    [ "$ut" = "disk/fcp/scstmpio" ] || continue
+    print "--- $d ---"
+    lsdev -l "$d" -F 'name:status:location:uniquetype:description' 2>/dev/null
+    lscfg -vpl "$d" 2>/dev/null | egrep 'Manufacturer|Machine Type and Model|ROS Level|Serial Number|Device Specific' || true
+    lsattr -El "$d" 2>/dev/null | egrep 'PCM|queue_depth|reserve_policy|rw_timeout|unique_id' || true
+    lsmpio -l "$d" 2>/dev/null || lspath -l "$d" 2>/dev/null || true
+done
+
+print "===== LEGACY SCST GENERIC MAP (SHOULD BE ABSENT AFTER V2 INSTALL) ====="
+odmget -q 'uniquetype=disk/fcp/mpioosdisk AND attribute=mpio_model_map AND deflt=0808SCST_BIO' PdAt 2>/dev/null
